@@ -36,7 +36,6 @@ def is_valid(cedula):
        return False
     return True
 
-
 def user_exist(name, password):
     conn = database_handler.Connection().connect()
     cursor = conn.cursor()
@@ -53,16 +52,14 @@ def add_client(data=[]):
     conn = database_handler.Connection().connect()
     cursor = conn.cursor()
 
-    print(data)
     cursor.execute('INSERT INTO clients(client_name, client_last_name, cedula, email, phone) VALUES(?,?,?,?,?)', (data[0],data[1],data[2], data[3], data[4]))
-    conn.commit()
-    conn.close()
-    print("Client created!")
+    get_conn().commit()
+    get_conn().close()
 
 
 def get_all(table):
-    conn = database_handler.Connection().connect()
-    cursor = conn.cursor()
+    #conn = database_handler.Connection().connect()
+    #cursor = conn.cursor()
     data=cursor.execute('''SELECT * FROM {}'''.format(table))
     return data
 
@@ -74,6 +71,23 @@ def get_client(cedula):
     data=cursor.execute('''SELECT * FROM clients WHERE cedula=?''', (cedula,))
     return data
 
+
+def delete(table, rowid):
+    conn = database_handler.Connection().connect()
+    cursor = conn.cursor()
+
+    if table == 'clients':
+       cedula = rowid 
+       cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (cedula,))
+       return True
+
+    else:
+       cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (rowid,))    
+       return True
+        
+    return False
+
+        
 
 
 if __name__=="__main__":   

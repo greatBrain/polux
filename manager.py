@@ -19,18 +19,16 @@ class Manager:
           
 
           while True:
-               print("Digite el numero de cedula (11 numeros enteros)")
-               cedula = helpers.valid_input(11, 11)
+                print("Digite el numero de cedula (11 numeros enteros)")
+                cedula = helpers.valid_input(11, 11)
 
-               if helpers.is_valid(cedula):
-                  self.cedula = cedula
-                  break
-
-               print("Cedula incorrecta")
+                if helpers.is_valid(cedula):
+                   self.cedula = cedula
+                   break
+                print("Cedula incorrecta")
 
           self.email = input("e-mail address:")
-          self.phone = input("phone number:")
-          
+          self.phone = input("phone number:")          
 
           client_data = [self.name, self.last_name, self.cedula, self.email, self.phone]
           self.clients = client_data
@@ -49,7 +47,6 @@ class Manager:
 
 
       def find_client(self, cedula):
-          helpers.get_client(cedula)
           client_data = helpers.get_client(cedula)
 
           #Show colored TITLES
@@ -58,35 +55,15 @@ class Manager:
 
           for client in client_data:
               print(*client, "\n", sep=', ')
-
-
-
       
 
-def edit():
+          def edit(cedula):
+              client_data = helpers.get_client(cedula)
+              return client_data
 
-    i, client= find()
+          def delete(cedula):
+              pass
 
-    if client:
-       print(f"Nuevo nombre de el cliente:({client['nombre']})")
-       clients[i]['nombre'] = helpers.valid_input(2, 20)
-
-       print(f"Nuevo apellido de el cliente:({client['apellido']})")
-       clients[i]['apellido'] = helpers.valid_input(2, 20)
-
-       return True
-
-    return False    
-
-def delete():
-
-    i, client= find()
-
-    if client:
-       client = clients.pop(i)
-       return True
-
-    return False 
 
 if __name__=="__main__":
    #import doctest

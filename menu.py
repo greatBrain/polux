@@ -35,7 +35,6 @@ class Menu:
                 Manager().show_data('clients')
 
              elif option == '2':
-                print("Showing one client...")
                 cedula = input("Write the client cedula:\n")
                 
                 if helpers.is_valid(cedula):
@@ -44,21 +43,18 @@ class Menu:
                    print(Fore.RED + "Cedula is not valid...")  
 
              elif option == '3':
-                print("Adding a client...")
                 Manager().add_client()
                 print("Added sucessfully..")
 
              elif option == '4':
-                print("Editing a client...")
-                if Manager().edit():
-                   print("Done sucessfully...")
-                else:
-                   print("Something is worong, try again...")    
+                 if Manager().edit():
+                    print("Done sucessfully...")
+                 else:
+                    print("Something is worong, try again...")    
 
              elif option == '5':
-                  print("Delete client...")
                   if Manager().delete():
-                     print("Sucessfully")
+                     print("Deleted Sucessfully")
                   else:
                      print("Something is worong, try again...")  
 
