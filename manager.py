@@ -57,12 +57,16 @@ class Manager:
               print(*client, "\n", sep=', ')
       
 
-          def edit(cedula):
-              client_data = helpers.get_client(cedula)
-              return client_data
+      def edit(cedula):
+          pass
 
-          def delete(cedula):
-              pass
+      def delete_client(self, cedula):
+
+          if helpers.format_screen_confirmation()==True:
+             helpers.delete('clients', cedula)             
+             return True
+          else:
+             return False              
 
 
 if __name__=="__main__":

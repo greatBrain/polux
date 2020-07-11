@@ -33,7 +33,6 @@ class Menu:
              if option == '1':
                 #TODO
                 Manager().show_data('clients')
-               #Connection().connect().close()
 
              elif option == '2':
                 cedula = input("Write the client cedula:\n")
@@ -54,7 +53,9 @@ class Menu:
                     print("Something is worong, try again...")    
 
              elif option == '5':
-                  if Manager().delete():
+                  cedula = int(input("Cedula:"))
+
+                  if Manager().delete_client(cedula)==True:
                      print("Deleted Sucessfully")
                   else:
                      print("Something is worong, try again...")  

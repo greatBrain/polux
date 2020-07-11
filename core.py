@@ -1,7 +1,7 @@
 #Source code, core of the app. Main module of the program.
 
 from menu import Menu
-from helpers import clear, close_program, is_user
+from helpers import clear, stop_program, is_user
 from colorama import Fore, Back, Style
 
 clear()

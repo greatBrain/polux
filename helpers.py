@@ -5,7 +5,7 @@ import re
 import os, signal
 import platform
 from data import database_handler
-
+from colorama import Fore, Back, Style
 
 #Function that detects the operating system and clean the terminal:
 def clear():
@@ -14,6 +14,28 @@ def clear():
     else:
        #UNIX LIKE SYSTEM
        os.system('clear') 
+
+def format_screen_confirmation():
+    clear()
+
+    print(Fore.RED + "")
+    print("========================".center(80))
+    print("========================".center(80))
+    print("=                      =".center(80))
+    print("=   SURE TO DELETE?    =".center(80))
+    print("=                      =".center(80))
+    print("========================".center(80))
+    print("========================".center(80))
+    print(Style.RESET_ALL)
+
+    confirm = input("y/n:")
+
+    if confirm=='y':
+       return True
+    elif confirm=='n':
+       return False
+    else:
+       print("Incorrect option..")
 
 
 def stop_program():
@@ -58,8 +80,8 @@ def add_client(data=[]):
     cursor = conn.cursor()
 
     cursor.execute('INSERT INTO clients(client_name, client_last_name, cedula, email, phone) VALUES(?,?,?,?,?)', (data[0],data[1],data[2], data[3], data[4]))
-    get_conn().commit()
-    get_conn().close()
+    conn.commit()
+    conn.close()
 
 
 def get_all(table):
@@ -78,25 +100,32 @@ def get_client(cedula):
 
 
 def delete(table, rowid):
-    conn = database_handler.Connection().connect()
-    cursor = conn.cursor()
+   
+    int(rowid)
 
-    if table == 'clients':
-       cedula = rowid 
-       cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (cedula,))
-       return True
+    try:
+       conn = database_handler.Connection().connect()
+       cursor = conn.cursor()
 
-    else:
-       cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (rowid,))    
-       return True
-
-    return False
-
-        
+       if table == 'clients':
+          cedula = rowid 
+          cursor.execute('''DELETE FROM clients WHERE cedula=?''', (cedula,))
+          return True
+       
+       else:
+          cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (rowid,)) 
+          conn.close()   
+          return True
+    
+    except Exception as e:
+          print("Error.. ", e)
+   
+    finally:
+          return False        
 
 
 if __name__=="__main__":   
-   is_user('erick', 'EMem23')
+   format_screen_confirmation()
 
 #Documentation:
 """
