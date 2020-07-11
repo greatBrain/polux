@@ -12,7 +12,7 @@ class Menu:
      def loop(self):    
          while True:
 
-             helpers.clear()            
+             helpers.clear()                     
 
              print(Back.YELLOW + Fore.BLACK + "================================".center(80))
              print(Style.RESET_ALL)
@@ -33,6 +33,7 @@ class Menu:
              if option == '1':
                 #TODO
                 Manager().show_data('clients')
+               #Connection().connect().close()
 
              elif option == '2':
                 cedula = input("Write the client cedula:\n")

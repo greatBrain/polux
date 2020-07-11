@@ -2,10 +2,9 @@
 #Funciones validadoras y eso
 
 import re
-import os
+import os, signal
 import platform
 from data import database_handler
-from tkinter import Tk
 
 
 #Function that detects the operating system and clean the terminal:
@@ -13,13 +12,20 @@ def clear():
     if platform.system() == 'Windows':
        os.system('cls')    
     else:
-       os.system('clear') #UNIX LIKE SYSTEM
+       #UNIX LIKE SYSTEM
+       os.system('clear') 
 
 
-def get_secreen_width():
-    screen_width = Tk().winfo_screenmmwidth()
-    middle_screen = screen_width/2
-    return middle_screen
+def stop_program():
+    if platform.system() == 'Windows':
+       os.system("TASKKILL /F /IM cmd.exe")
+
+    else:
+       #UNIX LIKE SYSTEMS
+       termina_pid = os.getpid()
+       os.kill(termina_pid, signal.SIGSTOP)
+       clear()
+
 
 def valid_input(min_length, max_length):
     while True:
@@ -31,21 +37,20 @@ def valid_input(min_length, max_length):
 
 
 def is_valid(cedula):
-    #Comprueba que la cedula empieze con enteros del cero al nueve y que sean tres numeros:
     if not re.match('[0-9]{11}', cedula):       
        return False
     return True
 
-def user_exist(name, password):
+def is_user(name, password):
     conn = database_handler.Connection().connect()
     cursor = conn.cursor()
-    data=cursor.execute('''SELECT * FROM user WHERE user_name=? AND password=?''', (name, password,))    
+    cursor.execute('''SELECT * FROM users WHERE user_name=? AND user_password=?''', (name,password,))
+    data = cursor.fetchall()
 
     if data:
-       conn.close()
        return True
     else:
-       return False 
+       return False  
 
              
 def add_client(data=[]):
@@ -58,8 +63,8 @@ def add_client(data=[]):
 
 
 def get_all(table):
-    #conn = database_handler.Connection().connect()
-    #cursor = conn.cursor()
+    conn = database_handler.Connection().connect()
+    cursor = conn.cursor()
     data=cursor.execute('''SELECT * FROM {}'''.format(table))
     return data
 
@@ -84,14 +89,14 @@ def delete(table, rowid):
     else:
        cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (rowid,))    
        return True
-        
+
     return False
 
         
 
 
 if __name__=="__main__":   
-   pass
+   is_user('erick', 'EMem23')
 
 #Documentation:
 """
