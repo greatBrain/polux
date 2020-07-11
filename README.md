@@ -1,2 +1,2 @@
 # polux
-Small and intuitive Command Line Application to mange clients, and products, and sales
+Small and colored Command Line Application to mange clients, and products, and sales
