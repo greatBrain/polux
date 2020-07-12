@@ -12,8 +12,8 @@ def login():
     count = 0
 
     while True:
-        print(Fore.GREEN + "LOGIN TO POLUX".center(80))
-        print("\n")
+        print(Fore.YELLOW + "LOGIN TO POLUX".center(80))
+        print("\n", "(Even if you can not see, password is typing ;))".center(80))
         
         user = input("USERNAME:")
         password = getpass.getpass("PASSWORD:")
