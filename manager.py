@@ -53,6 +53,14 @@ class Manager:
           for client in client_data:
               print(*client, "\n", sep=', ')
 
+      def show_products(self):
+          products = helpers.get_all('products')
+          
+          print("PRODUCTS".center(80))
+
+          print("NAME", " ", "PRICE")
+          for prod in products:
+              print(*prod, "\n", sep=' ')
 
       def find_client(self, cedula):
           client_data = helpers.get_client(cedula)
@@ -60,8 +68,8 @@ class Manager:
           #Show colored TITLES
           print(Fore.GREEN + "\n", "CLIENT INFORMATION".center(80))
           print(Style.RESET_ALL)
-
-          for client in client_data:
+          
+          for client in client_data:              
               print(*client, "\n", sep=', ')
       
 

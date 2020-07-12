@@ -62,6 +62,7 @@ def is_valid(cedula):
     if not re.match('[0-9]{11}', cedula):       
        return False
     return True
+    
 
 def is_user(name, password):
     conn = database_handler.Connection().connect()

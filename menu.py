@@ -24,7 +24,8 @@ class Menu:
              print("[4] Edit client               ".center(80), "\n")
              print("[5] Delete cliente            ".center(80), "\n")
              print("[6] Add product               ".center(80), "\n")
-             print("[7] Exit                      ".center(80), "\n")
+             print("[7] Show products             ".center(80), "\n")
+             print("[E] Exit                      ".center(80), "\n")
              print(Back.YELLOW + Fore.BLACK  + "================================".center(80))    
              print(Style.RESET_ALL)
 
@@ -64,8 +65,11 @@ class Menu:
              elif option == '6':
                   if Manager().add_product()==True:  
                      print("Product created!".upper())
-                     
+
              elif option == '7':
+                  Manager().show_products()
+                     
+             elif option == 'E':
                   break
                   Connection().connect().close()
 
