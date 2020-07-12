@@ -62,7 +62,7 @@ def is_valid(cedula):
     if not re.match('[0-9]{11}', cedula):       
        return False
     return True
-    
+
 
 def is_user(name, password):
     conn = database_handler.Connection().connect()
@@ -93,7 +93,7 @@ def add_product(data=[]):
     conn.commit()
     conn.close()
 
-def get_all(table):
+def get_all(table, rowid=None):
     conn = database_handler.Connection().connect()
     cursor = conn.cursor()
     data=cursor.execute('''SELECT * FROM {}'''.format(table))

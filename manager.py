@@ -9,23 +9,21 @@ class Manager:
           self.clients = []
 
       def add_client(self):
-          #self.client = dict()
 
-          print("Digite el nombre (de 2 a 20 caracteres)")
+          print("Digite el nombre (de 2 a 20 caracteres)".center(80))
           self.name = helpers.valid_input(2, 20)
           
-          print("Digite el apellido (de 2 a 20 caracteres)")
-          self.last_name = helpers.valid_input(2, 20)
-          
+          print("Digite el apellido (de 2 a 20 caracteres)".center(80))
+          self.last_name = helpers.valid_input(2, 20)          
 
           while True:
-                print("Digite el numero de cedula (11 numeros enteros)")
+                print("Digite el numero de cedula (11 numeros enteros)".center(80))
                 cedula = helpers.valid_input(11, 11)
 
                 if helpers.is_valid(cedula):
                    self.cedula = cedula
                    break
-                print("Cedula incorrecta")
+                print("Cedula incorrecta".center(80))
 
           self.email = input("e-mail address:")
           self.phone = input("phone number:")          
@@ -54,13 +52,12 @@ class Manager:
               print(*client, "\n", sep=', ')
 
       def show_products(self):
-          products = helpers.get_all('products')
-          
+          products = helpers.get_all('products')          
           print("PRODUCTS".center(80))
-
           print("NAME", " ", "PRICE")
           for prod in products:
               print(*prod, "\n", sep=' ')
+
 
       def find_client(self, cedula):
           client_data = helpers.get_client(cedula)
@@ -72,9 +69,10 @@ class Manager:
           for client in client_data:              
               print(*client, "\n", sep=', ')
       
-
-      def edit(cedula):
-          pass
+      '''Just be called from a gui controler to show every information'''
+      def edit(table, rowid):
+          int(rowid)
+          data = helpers.get_all(table, rowid)
 
       def delete_client(self, cedula):
 
