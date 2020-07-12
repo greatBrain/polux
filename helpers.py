@@ -17,25 +17,28 @@ def clear():
 
 def format_screen_confirmation():
     clear()
+    
+    while True: 
+       print(Fore.RED + "")
+       print("=======*=======*========".center(80))
+       print("===========*============".center(80))
+       print("=          *           =".center(80))
+       print("=    SURE TO DELETE?   =".center(80))
+       print("=          *           =".center(80))
+       print("===========*============".center(80))
+       print("=======*========*=======".center(80))
+       print(Style.RESET_ALL)
 
-    print(Fore.RED + "")
-    print("=======*=======*========".center(80))
-    print("===========*============".center(80))
-    print("=          *           =".center(80))
-    print("=    SURE TO DELETE?   =".center(80))
-    print("=          *           =".center(80))
-    print("===========*============".center(80))
-    print("=======*========*=======".center(80))
-    print(Style.RESET_ALL)
+       confirm = input("y/n:")
 
-    confirm = input("y/n:")
-
-    if confirm=='y':
-       return True
-    elif confirm=='n':
-       return False
-    else:
-       print("Incorrect option..")
+       if confirm=='y':
+          return True
+          break
+       elif confirm=='n':
+          return False
+          break
+       else:
+          print("Incorrect option..")
 
 
 def stop_program():
