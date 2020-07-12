@@ -84,6 +84,14 @@ def add_client(data=[]):
     conn.close()
 
 
+def add_product(data=[]):
+    conn = database_handler.Connection().connect()
+    cursor = conn.cursor()
+
+    cursor.execute('INSERT INTO products(product_name, product_price) VALUES(?,?)', (data[0],data[1]))
+    conn.commit()
+    conn.close()
+
 def get_all(table):
     conn = database_handler.Connection().connect()
     cursor = conn.cursor()
@@ -101,7 +109,8 @@ def get_client(cedula):
 
 def delete(table, rowid):
    
-    int(rowid)
+    int(rowid)    
+    str(table)
 
     try:
        conn = database_handler.Connection().connect()
@@ -114,7 +123,7 @@ def delete(table, rowid):
           return True
        
        else:
-          cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (rowid,))   
+          cursor.execute('DELETE FROM'+table+'WHERE rowid=?',(rowid,))   
           return True
     
     except Exception as e:

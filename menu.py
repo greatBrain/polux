@@ -10,8 +10,8 @@ from colorama import Fore, Back, Style
 class Menu:
 
      def loop(self):    
+         
          while True:
-
              helpers.clear()                     
 
              print(Back.YELLOW + Fore.BLACK + "================================".center(80))
@@ -23,7 +23,8 @@ class Menu:
              print("[3] Add client                ".center(80), "\n")
              print("[4] Edit client               ".center(80), "\n")
              print("[5] Delete cliente            ".center(80), "\n")
-             print("[6] Exit                      ".center(80), "\n")
+             print("[6] Add product               ".center(80), "\n")
+             print("[7] Exit                      ".center(80), "\n")
              print(Back.YELLOW + Fore.BLACK  + "================================".center(80))    
              print(Style.RESET_ALL)
 
@@ -40,28 +41,31 @@ class Menu:
                 if helpers.is_valid(cedula):
                    Manager().find_client(cedula) 
                 else:
-                   print(Fore.RED + "Cedula is not valid...")  
+                   print(Fore.RED + "Cedula is not valid...".upper())  
 
              elif option == '3':
                 Manager().add_client()
-                print("Added sucessfully..")
+                print("Added sucessfully..".upper())
 
              elif option == '4':
                  if Manager().edit():
-                    print("Done sucessfully...")
+                    print("Done sucessfully...".upper())
                  else:
-                    print("Something is worong, try again...")    
+                    print("Something is worong, try again...".upper())    
 
              elif option == '5':
                   cedula = int(input("Cedula:"))
 
                   if Manager().delete_client(cedula)==True:
-                     print("Deleted Sucessfully")
+                     print("Deleted Sucessfully".upper())
                   else:
-                     print("Something is worong, try again...")  
+                     print("Something is worong, try again...".upper())
 
              elif option == '6':
-                  print("Exiting...\n")
+                  if Manager().add_product()==True:  
+                     print("Product created!".upper())
+                     
+             elif option == '7':
                   break
                   Connection().connect().close()
 

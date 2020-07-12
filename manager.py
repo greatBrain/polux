@@ -34,6 +34,14 @@ class Manager:
           self.clients = client_data
           helpers.add_client(self.clients)
 
+      def add_product(self):
+
+          product_name = input("Write a name for the product:")
+          product_price = int(input("Set an integer price for the product units:"))
+          product_data=[product_name, product_price]
+
+          helpers.add_product(product_data)
+          return True
 
       def show_data(self, table):  
           client_data = helpers.get_all(table)
