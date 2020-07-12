@@ -10,11 +10,11 @@ def login():
     count = 0
 
     while True:
-        print(Fore.GREEN + "Login to Polux".center(80))
+        print(Fore.GREEN + "LOGIN TO POLUX".center(80))
         print("\n")
         
-        user = input("Username:")
-        password = input("Password:")
+        user = input("USERNAME:")
+        password = input("PASSWORD:")
         print(Style.RESET_ALL)    
 
         if is_user(user, password):

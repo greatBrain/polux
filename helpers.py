@@ -19,13 +19,13 @@ def format_screen_confirmation():
     clear()
 
     print(Fore.RED + "")
-    print("========================".center(80))
-    print("========================".center(80))
-    print("=                      =".center(80))
-    print("=   SURE TO DELETE?    =".center(80))
-    print("=                      =".center(80))
-    print("========================".center(80))
-    print("========================".center(80))
+    print("=======*=======*========".center(80))
+    print("===========*============".center(80))
+    print("=          *           =".center(80))
+    print("=    SURE TO DELETE?   =".center(80))
+    print("=          *           =".center(80))
+    print("===========*============".center(80))
+    print("=======*========*=======".center(80))
     print(Style.RESET_ALL)
 
     confirm = input("y/n:")
@@ -110,18 +110,18 @@ def delete(table, rowid):
        if table == 'clients':
           cedula = rowid 
           cursor.execute('''DELETE FROM clients WHERE cedula=?''', (cedula,))
+          conn.commit()
           return True
        
        else:
-          cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (rowid,)) 
-          conn.close()   
+          cursor.execute('DELETE FROM {} WHERE cedula=?'.format(table), (rowid,))   
           return True
     
     except Exception as e:
           print("Error.. ", e)
    
     finally:
-          return False        
+          conn.close()        
 
 
 if __name__=="__main__":   
