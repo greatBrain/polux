@@ -2,7 +2,7 @@
 
 import os
 import helpers
-from data.database_handler import Connection
+from ..data.database_handler import Connection
 from manager import Manager
 from colorama import Fore, Back, Style
 

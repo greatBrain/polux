@@ -4,7 +4,7 @@
 import re
 import os, signal
 import platform
-from data import database_handler
+from ..data import database_handler
 from colorama import Fore, Back, Style
 
 #Function that detects the operating system and clean the terminal:
