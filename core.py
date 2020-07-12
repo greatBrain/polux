@@ -3,6 +3,8 @@
 from menu import Menu
 from helpers import clear, stop_program, is_user
 from colorama import Fore, Back, Style
+import getpass
+
 
 clear()
 
@@ -14,7 +16,7 @@ def login():
         print("\n")
         
         user = input("USERNAME:")
-        password = input("PASSWORD:")
+        password = getpass.getpass("PASSWORD:")
         print(Style.RESET_ALL)    
 
         if is_user(user, password):
