@@ -56,7 +56,6 @@ def stop_program():
        os.kill(termina_pid, signal.SIGSTOP)
        clear()
 
-
 def valid_input(min_length, max_length):
     while True:
           text = input("> ")
@@ -139,20 +138,4 @@ def delete(table, rowid):
           print("Error.. ", e)
    
     finally:
-          conn.close()        
-
-
-if __name__=="__main__":   
-   format_screen_confirmation()
-
-#Documentation:
-"""
->>> is_valid('22900274733')   #No valido, en uso 
-False
-
->>> is_valid('A002229757833') #No valido, empieza con un caracter 
-False
-
->>> is_valid('00178472411')   #Valido
-True
-"""
+          conn.close() 
