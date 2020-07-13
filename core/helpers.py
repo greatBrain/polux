@@ -1,14 +1,18 @@
-#Auxiliar functions
-#Funciones validadoras y eso
+#Auxiliar functions, database functions
+#Funciones validadoras
 
 import re
 import os, signal
 import platform
-from polux.data import database_handler
-#from .. data import database_handler
+from database import database_handler
 from colorama import Fore, Back, Style
 
 #Function that detects the operating system and clean the terminal:
+def get_conn(conn, cursor):
+    conn = conn
+    cursor = cursor
+
+
 def clear():
     if platform.system() == 'Windows':
        os.system('cls')    
