@@ -3,12 +3,13 @@
 from menu import Menu
 from helpers import clear, stop_program, is_user
 from colorama import Fore, Back, Style
+from splash import splash
 import getpass
 
 clear()
 
 def login():
-      
+    
     count = 0
 
     while True:
@@ -20,6 +21,7 @@ def login():
         print(Style.RESET_ALL)    
 
         if is_user(user, password):
+           splash()
            Menu().loop()
            break
 
